@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  broker:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+
+  producer:
+    build: ./producer
+    depends_on:
+      - broker
+    environment:
+      KAFKA_BROKER_URL: broker:9092
+      TOPIC_CURRENT_SPEED: current.speed
+    command: ["./wait-for-it.sh", "broker:9092", "--", "python", "-u", "main.py"]
+    ports:
+      - 8000:8000
+
+  consumer_1:
+    build: ./consumer_1
+    depends_on: 
+      - broker
+    environment:
+      KAFKA_BROKER_URL: broker:9092
+      TOPIC_CURRENT_SPEED: current.speed
+      TOPIC_SPEED_CHECK: speed.check
+    command: ["./wait-for-it.sh", "broker:9092", "--", "python", "main.py"]
+
+  consumer_2:
+    build: ./consumer_2
+    depends_on: 
+      - broker
+    environment:
+      KAFKA_BROKER_URL: broker:9092
+      TOPIC_SPEED_CHECK: speed.check
+    command: ["./wait-for-it.sh", "broker:9092", "--", "python", "main.py"]
+    ports:
+      - 8005:8005      

@@ -1,0 +1,4 @@
+kafka-python
+uvicorn
+fastapi
+requests
