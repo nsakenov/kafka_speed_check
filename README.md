@@ -45,8 +45,7 @@ Example current.speed:
 111
 ```
 Example speed.check result:
-
-```json
+```
 {'speed': 111, 'exceeds': True}
 ```
 
