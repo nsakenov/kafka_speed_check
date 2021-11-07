@@ -26,7 +26,7 @@ services:
     environment:
       KAFKA_BROKER_URL: broker:9092
       TOPIC_CURRENT_SPEED: current.speed
-    command: ["./wait-for-it.sh", "broker:9092", "--", "python", "-u", "main.py"]
+    command: ["./wait-for-it.sh", "broker:9092", "-t", "100", "--", "python", "-u", "main.py"]
     ports:
       - 8000:8000
 
@@ -38,7 +38,7 @@ services:
       KAFKA_BROKER_URL: broker:9092
       TOPIC_CURRENT_SPEED: current.speed
       TOPIC_SPEED_CHECK: speed.check
-    command: ["./wait-for-it.sh", "broker:9092", "--", "python", "main.py"]
+    command: ["./wait-for-it.sh", "broker:9092", "-t", "100", "--", "python", "-u", "main.py"]
 
   consumer_2:
     build: ./consumer_2
@@ -47,6 +47,6 @@ services:
     environment:
       KAFKA_BROKER_URL: broker:9092
       TOPIC_SPEED_CHECK: speed.check
-    command: ["./wait-for-it.sh", "broker:9092", "--", "python", "main.py"]
+    command: ["./wait-for-it.sh", "broker:9092", "-t", "100", "--", "python", "-u", "main.py"]
     ports:
       - 8005:8005      

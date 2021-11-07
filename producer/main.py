@@ -4,6 +4,9 @@ import json
 from kafka import KafkaProducer, KafkaConsumer
 import asyncio
 import websockets
+import time
+
+time.sleep(50)
 
 Host = "0.0.0.0"
 
@@ -25,7 +28,7 @@ async def time(websocket, path):
         await asyncio.sleep(1)
 
 async def main():
-    async with websockets.serve(time, Host, 8000):
+    async with websockets.serve(time, Host, 8000, ping_interval=None):
         await asyncio.Future()  # run forever
 
 asyncio.run(main())

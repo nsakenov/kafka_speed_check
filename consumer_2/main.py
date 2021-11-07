@@ -4,7 +4,9 @@ import json
 from kafka import KafkaConsumer
 import asyncio
 import websockets
+import time
 
+time.sleep(50)
 Host = "0.0.0.0"
 
 TOPIC_SPEED_CHECK = os.environ.get('TOPIC_SPEED_CHECK')
@@ -24,7 +26,7 @@ async def time(websocket, path):
             await websocket.send('{}'.format(result))
 
 async def main():
-    async with websockets.serve(time, Host, 8005):
+    async with websockets.serve(time, Host, 8005, ping_interval=None):
         await asyncio.Future()  # run forever
 
 asyncio.run(main())
