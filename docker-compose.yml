@@ -27,6 +27,7 @@ services:
       KAFKA_BROKER_URL: broker:9092
       TOPIC_CURRENT_SPEED: current.speed
     command: ["./wait-for-it.sh", "broker:9092", "-t", "100", "--", "python", "-u", "main.py"]
+    # command: ["python", "-u", "main.py"]
     ports:
       - 8000:8000
 

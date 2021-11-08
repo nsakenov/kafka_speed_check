@@ -1,13 +1,12 @@
 import os
-from time import sleep
 import json
 from kafka import KafkaConsumer
-import asyncio
-import websockets
 import time
+import firebase_admin
+import threading
+from firebase_admin import firestore
+import asyncio
 
-time.sleep(50)
-Host = "0.0.0.0"
 
 TOPIC_SPEED_CHECK = os.environ.get('TOPIC_SPEED_CHECK')
 KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
@@ -18,15 +17,16 @@ consumer = KafkaConsumer(
     value_deserializer=lambda value: json.loads(value),
 )
 
-async def time(websocket, path):
-    while True:
-        for message in consumer:
-            result: dict = message.value
-            print(TOPIC_SPEED_CHECK, result, flush=True)
-            await websocket.send('{}'.format(result))
+# init Firebase
+cred_object = firebase_admin.credentials.Certificate("firebase-sdk.json")
+firebase_admin.initialize_app(cred_object)
+firestore_db = firebase_admin.firestore.client()
 
-async def main():
-    async with websockets.serve(time, Host, 8005, ping_interval=None):
-        await asyncio.Future()  # run forever
+#create & update
+doc_ref = firestore_db.collection(u'speed').document('speed-checked') #.document(u'test')
 
-asyncio.run(main())
+for message in consumer:
+    result: dict = message.value
+    print(result, flush=True)
+    doc_ref.set(result)
+    

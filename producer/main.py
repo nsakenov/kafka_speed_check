@@ -2,33 +2,39 @@
 import os
 import json
 from kafka import KafkaProducer, KafkaConsumer
-import asyncio
-import websockets
 import time
+import firebase_admin
+import threading
+from firebase_admin import firestore
+import asyncio
 
-time.sleep(50)
-
-Host = "0.0.0.0"
-
-TOPIC_CURRENT_SPEED = os.environ.get('TOPIC_CURRENT_SPEED')
-KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
-
-#kafka producer
+# kafka producer
 producer = KafkaProducer(
-    bootstrap_servers=KAFKA_BROKER_URL,
+    bootstrap_servers=os.environ.get('KAFKA_BROKER_URL'),
     # Encode all values as JSON
     value_serializer=lambda value: json.dumps(value).encode(),
 )
 
-async def time(websocket, path):
-    while True:
-        speed = await websocket.recv()
-        speed = int(speed)
-        producer.send(TOPIC_CURRENT_SPEED, value={'speed': speed})
-        await asyncio.sleep(1)
+# Create a callback on_snapshot function to capture changes
+def on_snapshot(doc_snapshot, changes, read_time):
+    for doc in doc_snapshot:
+        print(doc.to_dict())
+        doc = doc.to_dict()
+        producer.send(os.environ.get('TOPIC_CURRENT_SPEED'), value=doc)
+        callback_done.set()
+
+# create an Event for notifying main thread.
+callback_done = threading.Event()
+
+# init Firebase
+cred_object = firebase_admin.credentials.Certificate("firebase-sdk.json")
+firebase_admin.initialize_app(cred_object)
+firestore_db = firebase_admin.firestore.client()
 
 async def main():
-    async with websockets.serve(time, Host, 8000, ping_interval=None):
-        await asyncio.Future()  # run forever
+    # subscribe to firebase changes
+    doc_ref = firestore_db.collection(u'speed').document('current-speed')
+    doc_ref.on_snapshot(on_snapshot)
+    await asyncio.Future() #run forever
 
 asyncio.run(main())

@@ -1,9 +1,6 @@
 import json
 import os
 from kafka import KafkaConsumer, KafkaProducer
-import time
-
-time.sleep(50)
 
 KAFKA_BROKER_URL = os.environ.get('KAFKA_BROKER_URL')
 TOPIC_CURRENT_SPEED = os.environ.get('TOPIC_CURRENT_SPEED')
@@ -32,6 +29,5 @@ producer = KafkaProducer(
 for message in consumer:
     speed: dict = message.value
     check_speed: dict = is_high(speed)
-    print(TOPIC_SPEED_CHECK, check_speed, flush=True) #debugging
+    print(check_speed, flush=True) #debugging
     producer.send(TOPIC_SPEED_CHECK, value=check_speed)
-

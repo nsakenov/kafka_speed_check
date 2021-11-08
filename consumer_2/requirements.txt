@@ -1,4 +1,2 @@
 kafka-python
-uvicorn
-fastapi
-requests
+firebase_admin
