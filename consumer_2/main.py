@@ -23,7 +23,7 @@ firebase_admin.initialize_app(cred_object)
 firestore_db = firebase_admin.firestore.client()
 
 #create & update
-doc_ref = firestore_db.collection(u'speed').document('speed-checked') #.document(u'test')
+doc_ref = firestore_db.collection(u'speed-checked').document('speed-checked') #.document(u'test')
 
 for message in consumer:
     result: dict = message.value
