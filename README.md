@@ -4,7 +4,7 @@
 [![Docker Images](https://img.shields.io/badge/docker_images-confluent-orange.svg?style=flat-square)](https://github.com/confluentinc/cp-docker-images)
 [![Python](https://img.shields.io/badge/python-3.5+-blue.svg?style=flat-square)](https://www.python.org)
 
-This is the supporting repository for a project: [Tesla speed check with Kafka and Flutter Web](https://nurbolsakenov.com).
+This is the supporting repository for a project: [Tesla speed check with Kafka and Flutter Web](https://nurbolsakenov.com/tech/tesla-speed-check).
 
 ## Install
 
