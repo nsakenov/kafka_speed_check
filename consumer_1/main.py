@@ -9,7 +9,7 @@ TOPIC_SPEED_CHECK = os.environ.get('TOPIC_SPEED_CHECK')
 
 def is_high(speed: dict) -> dict:
     """Determine whether speed exceeds the limit"""
-    if speed['speed'] >= 100:
+    if speed['speed'] >= 100 and speed['speed'] <= 90:
         speed['exceeds'] = True
     else: 
         speed['exceeds'] = False
