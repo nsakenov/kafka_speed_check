@@ -1,11 +1,11 @@
-<mxfile modified="2021-11-09T14:34:31.883Z" host="app.diagrams.net" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="0iWh3zjL7S1J-XKYeur1" version="15.7.1" type="github">
+<mxfile modified="2021-11-09T14:43:14.300Z" host="app.diagrams.net" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="kJIeh3zzASs21y_pLK6F" version="15.7.1" type="github">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
-    <mxGraphModel dx="1351" dy="1613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1113" dy="1474" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="UEzPUAAOIrF-is8g5C7q-154" value="AWS Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;labelBackgroundColor=#ffffff;" parent="1" vertex="1">
-          <mxGeometry x="440" y="-620" width="660" height="311" as="geometry" />
+          <mxGeometry x="400" y="-650" width="740" height="430" as="geometry" />
         </mxCell>
         <mxCell id="nadK3N8KtskS3tCUBgkc-2" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-128.png" vertex="1" parent="1">
           <mxGeometry x="150" y="-640" width="62" height="62" as="geometry" />
@@ -32,6 +32,15 @@
         </mxCell>
         <mxCell id="nadK3N8KtskS3tCUBgkc-13" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Flutter Web client&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="100" y="-570" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="nadK3N8KtskS3tCUBgkc-16" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=14;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="430" y="-570" width="680" height="307" as="geometry" />
+        </mxCell>
+        <mxCell id="nadK3N8KtskS3tCUBgkc-17" value="" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Docker.svg;dashed=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="-590" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="nadK3N8KtskS3tCUBgkc-18" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="465" y="-500" width="125" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
