@@ -6,6 +6,8 @@
 
 This is the supporting repository for a project: [Tesla speed check with Kafka and Flutter Web](https://nurbolsakenov.com/tech/tesla-speed-check).
 
+![Design](https://raw.githubusercontent.com/nsakenov/kafka_speed_check/master/architecture.png)
+
 ## Install
 
 The backend part of the project is fully containerised. You will need [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/) to run it.
